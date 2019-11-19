@@ -1,0 +1,96 @@
+import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
+import styles from "./styles";
+import React,{useState,useEffect} from "react";
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import {addItemToCart, fetchAllMealData, setAddItemToCart, setRemoveItemToCart} from "../actions/loginActions";
+
+const getListViewItem = (item,navigation) => {
+    navigation.navigate('RestaurantDetails')
+}
+const addItem = (item,props,quantity) => {
+    let value=quantity+1;
+    props.addItemToCart(Object.assign(item, {"quantity":value}))
+}
+const removeItem = (item,props,quantity) => {
+    let value=quantity-1;
+    let mapArray=props.cartList.filter((value,index,array)=>{
+
+        return  value.idCategory!==item.idCategory
+
+
+    });
+
+    props.removeItemToCart(Object.assign(item, {"quantity":value}))
+}
+
+const MealList=(props)=>{
+    return(
+        <FlatList
+            data={props.allMealData}
+            renderItem={({item}) =>
+                <TouchableOpacity style={{flex:1}} >
+                    <View style={styles.rowViewStyle}>
+                        <Image source={{uri:item.strCategoryThumb}}
+                               resizeMode='stretch'
+                               style={styles.imageStyle}/>
+                        <Text style={styles.nameStyle}>{item.strCategory}</Text>
+
+                        {item.quantity===0 &&
+                        <TouchableOpacity style={{flex:1}}  onPress={()=>addItem(item,props,0)}>
+                            <View style={styles.addViewStyle}>
+                                <Text style={styles.addTextStyle}>ADD</Text>
+                            </View>
+                        </TouchableOpacity>}
+
+
+
+
+                        {item.quantity!==0 && <View style={styles.plusMinusViewStyle}>
+                            <TouchableOpacity  onPress={()=>addItem(item,props,item.quantity)}>
+                            <View style={styles.plusView}>
+                                <Text style={styles.plusTextStyle}>+</Text>
+                            </View>
+                            </TouchableOpacity>
+                            <View style={styles.plusView}>
+                                <Text style={styles.addTextStyle}>{item.quantity}</Text>
+                            </View>
+                            <TouchableOpacity  onPress={()=>removeItem(item,props,item.quantity)}>
+                                <View style={styles.plusView}>
+                                    <Text style={styles.plusTextStyle}>-</Text>
+                                </View>
+                            </TouchableOpacity>
+
+                        </View>}
+
+
+                    </View>
+                </TouchableOpacity>
+            }
+            numColumns={2}
+
+        />
+    )
+}
+
+const mapStateToProps = (state) => {
+    console.log("KSKSSSKSKKSKFILTERDATACARTDATATAT",state.login.cart)
+
+    return {
+        allMealData:state.login.allMealData,
+        cartList:state.login.cart
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addItemToCart: item => {
+            dispatch(setAddItemToCart(item))
+        },
+        removeItemToCart: item => {
+            dispatch(setRemoveItemToCart(item))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MealList);
+
