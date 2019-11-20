@@ -1,6 +1,7 @@
 import * as types from '../actions/types';
 import appState from '../contants/initialState';
 let categoryDataArray=[]
+let cartQuantity=0;
 
 const loginReducer = (state = appState.login, action) => {
 
@@ -20,13 +21,25 @@ const loginReducer = (state = appState.login, action) => {
             return { ...state,  allMealData:categoryData }
 
         case types.SET_ITEMS_TO_CART:
+            cartQuantity=0;
+
 
             let sameItem=false;
             categoryDataArray = state.allMealData.map(function(person) {
                 if(person.idCategory===action.data.idCategory)
-                return action.data;
-                return person
+                {
+                    cartQuantity=cartQuantity+ action.data.quantity;
+                    return action.data;
+                }
+                else
+                {
+                    cartQuantity=cartQuantity+ person.quantity;
+                    return person
+                }
+
+
             });
+
 
             let cart =state.cart?state.cart:[];
             let currentItemObject=action.data;
@@ -38,14 +51,14 @@ const loginReducer = (state = appState.login, action) => {
                 console.log('firstttttttttttttttttttttt ' ,isAvailableInCart);
                 currentItemObject['tempqty']=1;
                 cart.push(currentItemObject);
-                return { ...state, allMealData:categoryDataArray, cart:cart }
+                return { ...state, allMealData:categoryDataArray,cartQuantity:cartQuantity, cart:cart }
             }else{
                 console.log('firstttttttttttttttttttttt lllllllll')
 
                 let availableItemData=cart[isAvailableInCart];
                 availableItemData.tempqty=availableItemData.tempqty+1;
                 cart[isAvailableInCart]=availableItemData;
-                return { ...state, allMealData:categoryDataArray, cart:cart }
+                return { ...state, allMealData:categoryDataArray, cartQuantity:cartQuantity,cart:cart }
             }
 
             // categoryDataArray = state.allMealData.map(function(person) {
@@ -63,24 +76,23 @@ const loginReducer = (state = appState.login, action) => {
             // return { ...state, allMealData:categoryDataArray, cart:[filterCartData,action.data] }
 
             case types.REMOVE_ITEMS_TO_CART:
+                cartQuantity=state.cartQuantity;
+
+                if(cartQuantity>0)
+                    cartQuantity=cartQuantity-1;
 
 
             categoryDataArray = state.allMealData.map(function(person) {
                 if(person.idCategory===action.data.idCategory)
-                return action.data;
+                    return action.data;
                 return person
-
-
             });
 
-                let filterCart = state.cart.filter(function(person) {
-
-
+            let filterCart = state.cart.filter(function(person) {
                     return person.quantity!==0;
-
-
                 });
-            return { ...state, allMealData:categoryDataArray, cart:filterCart }
+
+            return { ...state, cartQuantity:cartQuantity,allMealData:categoryDataArray, cart:filterCart }
 
 
 

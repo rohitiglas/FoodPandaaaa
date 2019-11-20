@@ -29,7 +29,7 @@ const MealList=(props)=>{
         <FlatList
             data={props.allMealData}
             renderItem={({item}) =>
-                <TouchableOpacity style={{flex:1}} >
+
                     <View style={styles.rowViewStyle}>
                         <Image source={{uri:item.strCategoryThumb}}
                                resizeMode='stretch'
@@ -65,7 +65,7 @@ const MealList=(props)=>{
 
 
                     </View>
-                </TouchableOpacity>
+
             }
             numColumns={2}
 
@@ -74,7 +74,7 @@ const MealList=(props)=>{
 }
 
 const mapStateToProps = (state) => {
-    console.log("KSKSSSKSKKSKFILTERDATACARTDATATAT",state.login.cart)
+
 
     return {
         allMealData:state.login.allMealData,

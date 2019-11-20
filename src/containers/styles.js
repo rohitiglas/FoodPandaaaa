@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         paddingTop:5,paddingBottom:5,paddingLeft:10,paddingRight:10,justifyContent:'center',alignItems:'center',
         borderWidth:1,borderColor:'#d3d3d3',flexDirection:'row'},
 
-    plusMinusViewStyle:{marginTop:10,width:'70%',paddingTop:5,paddingBottom:5,paddingLeft:10,paddingRight:10,justifyContent:'space-between',alignItems:'center',
+    plusMinusViewStyle:{marginTop:10,width:'70%',paddingTop:5,
+        paddingBottom:5,paddingLeft:10,paddingRight:10,justifyContent:'space-between',alignItems:'center',
         borderWidth:1,borderColor:'#d3d3d3',flexDirection:'row'},
     plusView:{alignItems:'center',justifyContent:'center'},
 
@@ -36,11 +37,35 @@ const styles = StyleSheet.create({
     rowViewStyle:{
 
         alignSelf:'center',
-        alignItems:'center',justifyContent:'center',
+        alignItems:'center',
+        justifyContent:'center',
 
 
         margin:20,flex:1,
-        width: '90%',}
+        width: '90%',},
+    cartRowViewStyle:{
+        flexDirection:'row',
+
+        alignSelf:'center',
+        alignItems:'center',
+        justifyContent:'center',
+
+
+        margin:20,flex:1,
+        width: '80%',},
+
+    cartImageStyle:{marginLeft:20,alignSelf:'center',width: 100, height: 100,
+        borderWidth: 1,
+        borderRadius: 2,
+        borderColor: "#ddd",
+        borderBottomWidth: 0,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 2,},
+    cartPlusMinusViewStyle:{alignSelf:'center',marginLeft:20,marginTop:10,width:'50%',paddingTop:5,
+        paddingBottom:5,paddingLeft:10,paddingRight:10,justifyContent:'space-between',alignItems:'center',
+        borderWidth:1,borderColor:'#d3d3d3',flexDirection:'row'},
 });
 
 export default styles;
