@@ -1,5 +1,5 @@
 # FoodPandaaaa
-# This is the reference of food app ,You can add food in your cart and show that food item in your cart.
+* This is the reference of food app ,You can add food in your cart and show that food item in your cart.*
 
 https://user-images.githubusercontent.com/17780617/70413492-843c4d00-1a7d-11ea-8407-d547801d1fcc.png
 
