@@ -1,4 +1,4 @@
-import {FlatList, Image, Text, TouchableOpacity, View} from "react-native";
+import {FlatList, Image, Text, TouchableOpacity,Animated, View} from "react-native";
 import styles from "./styles";
 import React,{useState,useEffect} from "react";
 import {connect} from "react-redux";
@@ -12,6 +12,7 @@ const addItem = (item,props,quantity) => {
     let value=quantity+1;
     props.addItemToCart(Object.assign(item, {"quantity":value}))
 }
+const delayValue = 500;
 const removeItem = (item,props,quantity) => {
     let value=quantity-1;
     let mapArray=props.cartList.filter((value,index,array)=>{
@@ -25,11 +26,28 @@ const removeItem = (item,props,quantity) => {
 }
 
 const MealList=(props)=>{
+    const [animatedValue,setAnimatedValue]=useState(new Animated.Value(0));
+    useEffect(()=>{
+        Animated.spring(animatedValue, {
+            toValue: 1,
+            tension: 20,
+            useNativeDriver: true
+        }).start();
+    });
     return(
         <FlatList
             data={props.allMealData}
             renderItem={({item}) =>
+            {
 
+                const translateX = animatedValue.interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [1000, 1]
+                });
+                return(
+                    <Animated.View
+                        style={[styles.animateViewStyle, { transform: [{ translateX }] }]}
+                    >
                     <View style={styles.rowViewStyle}>
                         <Image source={{uri:item.strCategoryThumb}}
                                resizeMode='stretch'
@@ -48,9 +66,9 @@ const MealList=(props)=>{
 
                         {item.quantity!==0 && <View style={styles.plusMinusViewStyle}>
                             <TouchableOpacity  onPress={()=>addItem(item,props,item.quantity)}>
-                            <View style={styles.plusView}>
-                                <Text style={styles.plusTextStyle}>+</Text>
-                            </View>
+                                <View style={styles.plusView}>
+                                    <Text style={styles.plusTextStyle}>+</Text>
+                                </View>
                             </TouchableOpacity>
                             <View style={styles.plusView}>
                                 <Text style={styles.addTextStyle}>{item.quantity}</Text>
@@ -65,8 +83,15 @@ const MealList=(props)=>{
 
 
                     </View>
+                    </Animated.View>
+                )
+            }
+
+
+
 
             }
+            keyExtractor={item => item.idCategory}
             numColumns={2}
 
         />

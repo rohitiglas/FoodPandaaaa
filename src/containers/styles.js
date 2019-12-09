@@ -43,6 +43,10 @@ const styles = StyleSheet.create({
 
         margin:20,flex:1,
         width: '90%',},
+    animateViewStyle:{
+
+        flex:1,
+        width: '90%',},
     cartRowViewStyle:{
         flexDirection:'row',
 

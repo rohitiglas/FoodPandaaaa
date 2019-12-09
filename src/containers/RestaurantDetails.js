@@ -22,15 +22,15 @@ class RestaurantDetails extends Component {
 
 
     onSuccess = (data) => {
-        console.log("LSSSSSSSSSSResponseBansiBabu",data.meals)
+
         this.setState({ mealData:data.meals,isLoading: false })
         // const { navigation } = this.props;
         // navigation.navigate('home');
     }
     onError = (error) => {
-        console.log("LSSSSSSSSSSResponseBansiBabu",error)
 
-        // console.log(error)
+
+
 
     }
     render() {

@@ -43,17 +43,17 @@ const loginReducer = (state = appState.login, action) => {
 
             let cart =state.cart?state.cart:[];
             let currentItemObject=action.data;
-            console.log('firstttttttttttttttttttttt cart' ,cart)
-            console.log('firstttttttttttttttttttttt currentItemObject' ,currentItemObject)
+
+
 
             let isAvailableInCart=cart.findIndex(x => x.idCategory ===currentItemObject.idCategory);
             if (isAvailableInCart===-1){
-                console.log('firstttttttttttttttttttttt ' ,isAvailableInCart);
+
                 currentItemObject['tempqty']=1;
                 cart.push(currentItemObject);
                 return { ...state, allMealData:categoryDataArray,cartQuantity:cartQuantity, cart:cart }
             }else{
-                console.log('firstttttttttttttttttttttt lllllllll')
+
 
                 let availableItemData=cart[isAvailableInCart];
                 availableItemData.tempqty=availableItemData.tempqty+1;

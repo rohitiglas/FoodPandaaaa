@@ -41,7 +41,7 @@ export function* fetchAllMealData(action) {
         const data = yield call(loginApis.fetchAllMealData)
 
         action.onSuccess(data.data)
-        console.log("YIELPPUTISCALLED","TRUE")
+
         yield put(setAllMealData(data.data))
     } catch (error) {
 
