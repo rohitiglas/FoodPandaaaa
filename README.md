@@ -7,6 +7,11 @@
 
 <a href="https://imgflip.com/gif/3iv50z"><img src="https://i.imgflip.com/3iv50z.gif" title="made at imgflip.com"/></a>
 
+<div align="center">
+    <img src="https://imgflip.com/gif/3iv50z"
+         </img> 
+</div>
+
 
 ![Simulator Screen Shot - iPhone 11 Pro Max - 2019-12-09 at 13 09 10](https://user-images.githubusercontent.com/17780617/70416707-af2a9f00-1a85-11ea-8560-4061625098a9.png)
 ![Simulator Screen Shot - iPhone 11 Pro Max - 2019-12-09 at 13 09 23](https://user-images.githubusercontent.com/17780617/70416756-c36e9c00-1a85-11ea-84c2-ef2a53ddfd88.png)
