@@ -6,5 +6,7 @@
 ## Second screen is cart screen,In this screen i have shown the added food item and also have an option to increase/decrease the food quantity
 
 
-![Simulator Screen Shot - iPhone 11 Pro Max - 2019-12-09 at 13 09 23](https://user-images.githubusercontent.com/17780617/70416492-34618400-1a85-11ea-9243-e9a7a0eee9b2.png)
+![Simulator Screen Shot - iPhone 11 Pro Max - 2019-12-09 at 13 09 10](https://user-images.githubusercontent.com/17780617/70416707-af2a9f00-1a85-11ea-8560-4061625098a9.png)
+![Simulator Screen Shot - iPhone 11 Pro Max - 2019-12-09 at 13 09 23](https://user-images.githubusercontent.com/17780617/70416756-c36e9c00-1a85-11ea-84c2-ef2a53ddfd88.png)
+![Simulator Screen Shot - iPhone 11 Pro Max - 2019-12-09 at 13 09 38](https://user-images.githubusercontent.com/17780617/70416781-d5e8d580-1a85-11ea-8cdd-9d84608e4ee0.png)
 
